@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <!-- Chrome 和 Android 支援 -->
+    <meta name="theme-color" content="#4CAF50">
+    <!-- Safari 和 iOS 支援 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>我的手機網頁 App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <!-- 為 Safari 提供圖示 -->
+    <link rel="apple-touch-icon" href="icon-180.png">
+    <!-- 為 Chrome 和通用瀏覽器提供圖示 -->
+    <link rel="icon" href="icon-192.png" type="image/png">
+</head>
+<body>
+    <h1>歡迎使用我的 App</h1>
+    <button id="myButton">點我一下！</button>
+    <p id="message"></p>
+    <script src="script.js"></script>
+    <script>
+        // 檢查並註冊 Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker 註冊成功', reg))
+                    .catch(err => console.log('Service Worker 註冊失敗', err));
+            });
+        }
+    </script>
+</body>
+</html>
